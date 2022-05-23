@@ -47,19 +47,17 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-            title: const Text('Maps App'),
-            backgroundColor: Colors.amber.shade700),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
-          ),
-          markers: markers,
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text('Maps App'),
+          backgroundColor: Colors.amber.shade700),
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: _center,
+          zoom: 11.0,
         ),
+        markers: markers,
       ),
     );
   }
