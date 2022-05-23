@@ -1,19 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:maps_app/widget/map_widget.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapPages extends StatefulWidget {
-  const MapPages({Key? key}) : super(key: key);
+void main() => runApp(const MapPage());
+
+class MapPage extends StatefulWidget {
+  const MapPage({Key? key}) : super(key: key);
 
   @override
-  State<MapPages> createState() => _MapPagesState();
+  _MapPageState createState() => _MapPageState();
 }
 
-class _MapPagesState extends State<MapPages> {
+class _MapPageState extends State<MapPage> {
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(13.695478508868032, -89.21456579946783);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
         appBar: AppBar(
-          title: const Text('App Map'),
+            title: const Text('Maps App'),
+            backgroundColor: Colors.amber.shade700),
+        body: GoogleMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 11.0,
+          ),
         ),
-        body: const MapWidget(),
-      );
+      ),
+    );
+  }
 }

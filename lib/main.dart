@@ -8,10 +8,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Map App',
+        title: 'Maps App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MapPages(),
+        home: const MapPage(),
       );
 }
