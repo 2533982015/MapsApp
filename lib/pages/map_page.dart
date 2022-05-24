@@ -31,8 +31,7 @@ class _MapPageState extends State<MapPage> {
             var puntos = streamSnapshot.data!.docs
                 .map((doc) => Marker(
                     markerId: MarkerId(doc['nombre']),
-                    icon: BitmapDescriptor.defaultMarkerWithHue(
-                        BitmapDescriptor.hueAzure),
+                    icon: BitmapDescriptor.defaultMarkerWithHue(doc['color'].toDouble()),
                     infoWindow: InfoWindow(
                         title: doc['nombre'], snippet: doc['descripcion']),
                     position: LatLng(
